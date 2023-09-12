@@ -15,7 +15,7 @@ Penjelasan mengenai cara mengimplementasikan checklist secara step=by-step :
         Dalam direktori main yang ada pada direktori utama berisikan main.html ini, akan ditambahkan item yang memiliki atribut wajib seperti name(dengan tipe CharField), amount(dengan tipe IntegerField), dan description(dengan tipe TextField). models sebagai kelas dasar yang digunakan untuk mendefinisikan model dalam Django, dengan Item sebagai nama model yang didefinisikan. Setelah itu dilakukan migrasi, yaitu sebuah instruksi untuk mengubah struktur tabel basis data sesuai dengan perubahan model yang didefinisikan dalam kode.Migrasi ini merupakan cara Django untuk melacak perubahan pada model basis data yang ada.
     
     #Membuat fungsi pada views.py
-        Didalam aplikasi main, terdapat berkas views.py yang kemudian dapat ditambahkan fungsi yang akan dikembalikan ke dalam template html. Fungsi ini akan digunakan untuk menampilkan informasi yang direquest.
+        Didalam aplikasi main, terdapat berkas views.py yang kemudian dapat ditambahkan fungsi yang akan dikembalikan ke dalam template html. Fungsi ini akan digunakan untuk menampilkan informasi yang direquest. Saya menambahkan nama-nama dari semua barang, berat setiap barang, harga setiap barang, dan jumlah ketersediaan/stok untuk setiap barang.
     
     #Mengatur routing aplikasi main
         Dan yang terakhir, perlu mengatur routing khusus untuk aplikasi "main", yaitu dnegan membuka berkas urls.py yang ada pada direktori main dan menambahkan beberapa kode : 
@@ -31,6 +31,8 @@ Penjelasan mengenai cara mengimplementasikan checklist secara step=by-step :
     
     #Membuat sebuah README.md
         Yaitu dengan menambahkan file dengan nama README.md pada direktori utama. Setelah itu tinggal melakukan command add, commit, dan push.
+
+        ![alt text](?raw=true)
         
         *Menggunakan virtual environment 
             Virtual environment digunakan untuk mengisolasi lingkungan pengembangan aplikasi sehingga dependensi dan paket yang digunakan dalam proyek tidak akan berinteraksi dengan proyek lain atau sistem operasi secara global. Dengan virtual environment, maka dapat mengelola paket-paket Python yang diperlukan secara terisolasi untuk setiap proyek, yang membuatnya lebih bersih dan teratur. Tanpa menggunakan virtual environment, akan masih dapat membuat aplikasi web berbasis Django, tetapi dapat menjadi sulit mengelola dependensi dan mungkin menyebabkan konflik jika sedang bekerja pada beberapa proyek yang menggunakan versi paket yang berbeda.
