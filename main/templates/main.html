@@ -1,6 +1,108 @@
 <h1>NurinApps Page</h1>
 
 <h5>Name: </h5>
-<p>{{ name }}</p> <!-- Ubahlah sesuai dengan nama kamu -->
+<p>{{ name }}</p> 
 <h5>Class: </h5>
-<p>{{ class }}</p> <!-- Ubahlah sesuai dengan kelas kamu -->
+<p>{{ class }}</p> 
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NurinMaret</title>
+    <style>
+        /* Style untuk tampilan produk */
+        .produk {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .gambar-produk {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        .deskripsi-produk {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stok Produk NurinMaret</h1>
+    </header>
+<div class="produk">
+    <img class="gambar-produk" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-2999142/sumo_sumo-premium-beras-merah--5-kg-_full03.jpg" alt="Beras sumo">
+    <div class="deskripsi-produk">
+        <h2>Beras Sumo Premium</h2>
+        <p>Kategori: Beras</p>
+        <p>Berat: 5 Kg</p>
+        <p>Harga: Rp 72.600</p>
+        <p>Stok: 48</p>
+    </div>
+</div>
+<div class="produk">
+    <img class="gambar-produk" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//102/MTA-3744948/tropical_tropical-minyak-goreng-pet-2l_full02.jpg" alt="Minyak Tropical">
+    <div class="deskripsi-produk">
+        <h2>Minyak Goreng Tropical</h2>
+        <p>Kategori: Minyak</p>
+        <p>Berat: 2 L</p>
+        <p>Harga: Rp 36.200</p>
+        <p>Stok: 69</p>
+    </div>
+</div>
+<div class="produk">
+    <img class="gambar-produk" src="data:image/jpeg;base64,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" alt="Indomie Goreng">
+    <div class="deskripsi-produk">
+        <h2>Indomie Goreng</h2>
+        <p>Kategori: Mie instan</p>
+        <p>Berat:80gram</p>
+        <p>Harga: Rp 3.100</p>
+        <p>Stok: 120</p>
+    </div>
+</div>
+<div class="produk">
+    <img class="gambar-produk" src="data:image/jpeg;base64,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" alt="Indomie Soto">
+    <div class="deskripsi-produk">
+        <h2>Indomie Kuah Rasa Soto</h2>
+        <p>Kategori: Mie instan</p>
+        <p>Berat: 70gram</p>
+        <p>Harga: Rp 2.850</p>
+        <p>Stok: 108</p>
+    </div>
+</div>
+<div class="produk">
+    <img class="gambar-produk" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//85/MTA-3470142/ultra_susu-uht-ultra-milk-125ml-vanila_full02.jpg" alt="Ultra Milk">
+    <div class="deskripsi-produk">
+        <h2>Ultra Milk Plain</h2>
+        <p>Kategori: Susu sapi perah</p>
+        <p>Berat: 250 Ml</p>
+        <p>Harga: Rp 4.450</p>
+        <p>Stok: 55</p>
+    </div>
+</div>
+<div class="produk">
+    <img class="gambar-produk" src="https://media.monotaro.id/mid01/big/Perlengkapan%20Dapur%20%26%20Horeka/Minuman/Minuman%20Ringan/Aqua%20Air%20Mineral%20Botol/Aqua%20Air%20Mineral%20Botol%20Click%20n'%20Go%20750ml%201carton(18pcs)/f0S009844540-2.jpg" alt="Aqua">
+    <div class="deskripsi-produk">
+        <h2>Aqua Air Mineral</h2>
+        <p>Kategori: Air mineral</p>
+        <p>Berat: 750 Ml</p>
+        <p>Harga: Rp 6.600</p>
+        <p>Stok: 78</p>
+    </div>
+</div>
+<div class="produk">
+    <img class="gambar-produk" src="https://images.soco.id/387199b9-bb37-4375-9319-018e5827685d-image-0-1619767136854" alt="Aqua">
+    <div class="deskripsi-produk">
+        <h2>Shampoo Pantene</h2>
+        <p>Kategori: Shampoo</p>
+        <p>Berat: 900 Ml</p>
+        <p>Harga: Rp 108.700</p>
+        <p>Stok: 85</p>
+    </div>
+</div>
+    
+</div>
+</body>
+</html>
