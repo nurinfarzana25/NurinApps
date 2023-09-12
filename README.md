@@ -32,7 +32,7 @@ Penjelasan mengenai cara mengimplementasikan checklist secara step=by-step :
     #Membuat sebuah README.md
         Yaitu dengan menambahkan file dengan nama README.md pada direktori utama. Setelah itu tinggal melakukan command add, commit, dan push.
 
-        ![alt text](?raw=true)
+        ![alt text](https://github.com/nurinfarzana25/NurinApps/blob/main/bagan.png?raw=true)
         
         *Menggunakan virtual environment 
             Virtual environment digunakan untuk mengisolasi lingkungan pengembangan aplikasi sehingga dependensi dan paket yang digunakan dalam proyek tidak akan berinteraksi dengan proyek lain atau sistem operasi secara global. Dengan virtual environment, maka dapat mengelola paket-paket Python yang diperlukan secara terisolasi untuk setiap proyek, yang membuatnya lebih bersih dan teratur. Tanpa menggunakan virtual environment, akan masih dapat membuat aplikasi web berbasis Django, tetapi dapat menjadi sulit mengelola dependensi dan mungkin menyebabkan konflik jika sedang bekerja pada beberapa proyek yang menggunakan versi paket yang berbeda.
