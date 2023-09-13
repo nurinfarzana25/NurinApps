@@ -33,7 +33,6 @@ Penjelasan mengenai cara mengimplementasikan checklist secara step-by-step :
         Yaitu dengan menambahkan file dengan nama README.md pada direktori utama. Setelah itu tinggal melakukan command add, commit, dan push.
 
 ![alt text](https://github.com/nurinfarzana25/NurinApps/blob/main/bagan.png?raw=true)
-<<<<<<< HEAD
 
         *Penjelasan bagan :
             - Client Request
@@ -49,8 +48,6 @@ Penjelasan mengenai cara mengimplementasikan checklist secara step-by-step :
             - HTTP Respone
               Setelah tampilan (views) selesai memproses permintaan dan merender HTML, hasilnya dikirimkan sebagai respons HTTP ke client. Respons ini mungkin berisi HTML, CSS, JavaScript, atau data lain yang diperlukan oleh klien untuk menampilkan halaman web.
             Jadi, dalam rangkaian ini, urls.py mengarahkan permintaan klien ke fungsi tampilan yang sesuai di views.py. Fungsi tampilan ini dapat mengakses model-data dari models.py jika diperlukan dan menggunakan template HTML untuk merender tampilan yang dikirimkan kembali ke klien sebagai respons HTTP. Semua komponen ini berkolaborasi untuk menyajikan halaman web yang diinginkan oleh klien.
-=======
->>>>>>> b84fdf69d0701004a632d0e2c9a4e01110a8a60a
         
         *Menggunakan virtual environment 
             Virtual environment digunakan untuk mengisolasi lingkungan pengembangan aplikasi sehingga dependensi dan paket yang digunakan dalam proyek tidak akan berinteraksi dengan proyek lain atau sistem operasi secara global. Dengan virtual environment, maka dapat mengelola paket-paket Python yang diperlukan secara terisolasi untuk setiap proyek, yang membuatnya lebih bersih dan teratur. Tanpa menggunakan virtual environment, akan masih dapat membuat aplikasi web berbasis Django, tetapi dapat menjadi sulit mengelola dependensi dan mungkin menyebabkan konflik jika sedang bekerja pada beberapa proyek yang menggunakan versi paket yang berbeda.
