@@ -1,9 +1,9 @@
 Tautan menuju aplikasi Adaptable yang sudah di-deploy : https://nurinapps.adaptable.app/ atau https://nurinapps.adaptable.app/main/
 
-Penjelasan mengenai cara mengimplementasikan checklist secara step=by-step :
+Penjelasan mengenai cara mengimplementasikan checklist secara step-by-step :
     
     #Membuat proyek Django baru
-        Setelah sebelumnya membuat direktori utama dan direktori proyek yang sudah terhubung dengan repositori di github dan menambahkan berkas requirments.txt yang berisikan beberapa dependencies serta menginstallnya, selanjutnya menjalankan command "django-admin startproject (nama_proyek) ." dan berhasillah dalam membuat proyek Django yang baru.
+        Setelah sebelumnya membuat direktori utama dan direktori proyek yang sudah terhubung dengan repositori di github yang dalam prosesnya disarankan untuk membuat lingkungan virtual Python untuk proyek Django agar dapat mengisolasi dependensi proyek yaitu dengan menjalankan command 'python -m venv env' dan diaktifkan dengan 'env\Scripts\activate.bat'. Dan kemudian menambahkan berkas requirments.txt yang berisikan beberapa dependencies serta menginstallnya dengan menjalankan command 'pip install django', selanjutnya menjalankan command "django-admin startproject (nama_proyek) ." dan berhasillah dalam membuat proyek Django yang baru.
     
     #Membuat aplikasi main pada proyek
         Main akan ditambahkan ke dalam proyek lebih tepatnya pada direktori utama, yang nantinya akan menjadi direktori aplikasi. Yaitu dengan menjalankan command "python manage.py startapp main" dan mendaftarkannya ke dalam proyek dengan cara menambahkan 'main' pada berkas setting.py dalam direktori proyek. Pada aplikasi main ini lah yang akan dibuat direktori template yang berisikan main.html untuk membuat sebuah struktur untuk ditampilkan pada halaman web. 
@@ -32,7 +32,22 @@ Penjelasan mengenai cara mengimplementasikan checklist secara step=by-step :
     #Membuat sebuah README.md
         Yaitu dengan menambahkan file dengan nama README.md pada direktori utama. Setelah itu tinggal melakukan command add, commit, dan push.
 
-        ![alt text](?raw=true)
+![alt text](https://github.com/nurinfarzana25/NurinApps/blob/main/bagan.png?raw=true)
+
+        *Penjelasan bagan :
+            - Client Request
+              Client (misalnya, peramban web seperti Chrome) melakukan permintaan ke aplikasi web Django dengan mengakses URL tertentu, seperti http://example.com/myapp/page1/.
+            - urls.py
+              File urls.py merupakan bagian dari proyek Django yang menghubungkan URL yang diminta oleh client dengan tindakan (views) yang akan diambil. Ini berisi peta URL yang mengarahkan permintaan klien ke fungsi tampilan (views) yang sesuai.
+            - views.py
+              File views.py berisi fungsi-fungsi tampilan yang akan mengelola permintaan dari client. Ketika URL cocok dengan pola yang didefinisikan di urls.py, fungsi tampilan yang sesuai akan dipanggil. Fungsi tampilan ini akan melakukan logika bisnis, mengambil data dari model jika diperlukan, dan mempersiapkan respons.
+            - models.py
+              File models.py merupakan bagian dari proyek Django yang berisi definisi model-data, seperti tabel database atau objek Python yang mewakili entitas dalam aplikasi. Model ini digunakan untuk berinteraksi dengan database dan mengambil atau menyimpan data.
+            - HTML template
+              Berkas HTML Template adalah berkas yang digunakan untuk menghasilkan tampilan HTML yang akan dikirimkan sebagai respons ke client. Dalam berkas ini, Anda dapat menggunakan sintaks template Django untuk menyisipkan data yang diperoleh dari model ke dalam tampilan.
+            - HTTP Respone
+              Setelah tampilan (views) selesai memproses permintaan dan merender HTML, hasilnya dikirimkan sebagai respons HTTP ke client. Respons ini mungkin berisi HTML, CSS, JavaScript, atau data lain yang diperlukan oleh klien untuk menampilkan halaman web.
+            Jadi, dalam rangkaian ini, urls.py mengarahkan permintaan klien ke fungsi tampilan yang sesuai di views.py. Fungsi tampilan ini dapat mengakses model-data dari models.py jika diperlukan dan menggunakan template HTML untuk merender tampilan yang dikirimkan kembali ke klien sebagai respons HTTP. Semua komponen ini berkolaborasi untuk menyajikan halaman web yang diinginkan oleh klien.
         
         *Menggunakan virtual environment 
             Virtual environment digunakan untuk mengisolasi lingkungan pengembangan aplikasi sehingga dependensi dan paket yang digunakan dalam proyek tidak akan berinteraksi dengan proyek lain atau sistem operasi secara global. Dengan virtual environment, maka dapat mengelola paket-paket Python yang diperlukan secara terisolasi untuk setiap proyek, yang membuatnya lebih bersih dan teratur. Tanpa menggunakan virtual environment, akan masih dapat membuat aplikasi web berbasis Django, tetapi dapat menjadi sulit mengelola dependensi dan mungkin menyebabkan konflik jika sedang bekerja pada beberapa proyek yang menggunakan versi paket yang berbeda.
