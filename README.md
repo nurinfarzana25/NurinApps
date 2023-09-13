@@ -32,7 +32,25 @@ Penjelasan mengenai cara mengimplementasikan checklist secara step-by-step :
     #Membuat sebuah README.md
         Yaitu dengan menambahkan file dengan nama README.md pada direktori utama. Setelah itu tinggal melakukan command add, commit, dan push.
 
-        ![alt text](?raw=true)
+![alt text](https://github.com/nurinfarzana25/NurinApps/blob/main/bagan.png?raw=true)
+<<<<<<< HEAD
+
+        *Penjelasan bagan :
+            - Client Request
+              Client (misalnya, peramban web seperti Chrome) melakukan permintaan ke aplikasi web Django dengan mengakses URL tertentu, seperti http://example.com/myapp/page1/.
+            - urls.py
+              File urls.py merupakan bagian dari proyek Django yang menghubungkan URL yang diminta oleh client dengan tindakan (views) yang akan diambil. Ini berisi peta URL yang mengarahkan permintaan klien ke fungsi tampilan (views) yang sesuai.
+            - views.py
+              File views.py berisi fungsi-fungsi tampilan yang akan mengelola permintaan dari client. Ketika URL cocok dengan pola yang didefinisikan di urls.py, fungsi tampilan yang sesuai akan dipanggil. Fungsi tampilan ini akan melakukan logika bisnis, mengambil data dari model jika diperlukan, dan mempersiapkan respons.
+            - models.py
+              File models.py merupakan bagian dari proyek Django yang berisi definisi model-data, seperti tabel database atau objek Python yang mewakili entitas dalam aplikasi. Model ini digunakan untuk berinteraksi dengan database dan mengambil atau menyimpan data.
+            - HTML template
+              Berkas HTML Template adalah berkas yang digunakan untuk menghasilkan tampilan HTML yang akan dikirimkan sebagai respons ke client. Dalam berkas ini, Anda dapat menggunakan sintaks template Django untuk menyisipkan data yang diperoleh dari model ke dalam tampilan.
+            - HTTP Respone
+              Setelah tampilan (views) selesai memproses permintaan dan merender HTML, hasilnya dikirimkan sebagai respons HTTP ke client. Respons ini mungkin berisi HTML, CSS, JavaScript, atau data lain yang diperlukan oleh klien untuk menampilkan halaman web.
+            Jadi, dalam rangkaian ini, urls.py mengarahkan permintaan klien ke fungsi tampilan yang sesuai di views.py. Fungsi tampilan ini dapat mengakses model-data dari models.py jika diperlukan dan menggunakan template HTML untuk merender tampilan yang dikirimkan kembali ke klien sebagai respons HTTP. Semua komponen ini berkolaborasi untuk menyajikan halaman web yang diinginkan oleh klien.
+=======
+>>>>>>> b84fdf69d0701004a632d0e2c9a4e01110a8a60a
         
         *Menggunakan virtual environment 
             Virtual environment digunakan untuk mengisolasi lingkungan pengembangan aplikasi sehingga dependensi dan paket yang digunakan dalam proyek tidak akan berinteraksi dengan proyek lain atau sistem operasi secara global. Dengan virtual environment, maka dapat mengelola paket-paket Python yang diperlukan secara terisolasi untuk setiap proyek, yang membuatnya lebih bersih dan teratur. Tanpa menggunakan virtual environment, akan masih dapat membuat aplikasi web berbasis Django, tetapi dapat menjadi sulit mengelola dependensi dan mungkin menyebabkan konflik jika sedang bekerja pada beberapa proyek yang menggunakan versi paket yang berbeda.
