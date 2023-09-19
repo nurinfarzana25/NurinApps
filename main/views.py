@@ -1,38 +1,54 @@
+from django.http import HttpResponseRedirect
+from main.forms import ProductForm
+from django.urls import reverse
 from django.shortcuts import render
+from main.models import Item
+from django.http import HttpResponse
+from django.core import serializers
+from django.db.models import Sum
+
+
+def create_product(request):
+    form = ProductForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "create_product.html", context)
+
 
 # Create your views here.
 def show_main(request):
+    items = Item.objects.all()
+    # total_stok = items.aaggregate(total_stok=Sum('amount'))['total_stok'] or 0
+    total_stok = items.aggregate(total_stok=Sum('amount'))['total_stok'] or 0
+
+
     context = {
         'name': 'Nurin Farzana Nafiah',
         'class': 'PBP C',
-        'barang1' : 'Beras Sumo Premium',
-        'barang2' : 'Minyak Goreng Tropical',
-        'barang3' : 'Indomie Goreng',
-        'barang4' : 'Indomie Kuah Rasa Soto',
-        'barang5' : 'Ultra Milk Plain',
-        'barang6' : 'Aqua Mineral',
-        'barang7' : 'Pantene Shampoo',
-        'berat1' :'5 Kg',
-        'berat2' :'2 L',
-        'berat3' :'80 Gram',
-        'berat4' :'70 Gram',
-        'berat5' :'250 Ml',
-        'berat6' :'750 Ml',
-        'berat7' :'900 Ml',
-        'harga1' :'Rp72.600',
-        'harga2' :'Rp36.200',
-        'harga3' :'Rp3.100',
-        'harga4' :'Rp2.850',
-        'harga5' :'Rp4.450',
-        'harga6' :'Rp6.600',
-        'harga7' :'Rp108.700',
-        'stok1' :'48',
-        'stok2' :'69',
-        'stok3' :'120',
-        'stok4' :'108',
-        'stok5' :'55',
-        'stok6' :'78',
-        'stok7' :'85'
+        'items': items,
+        'total_stok': total_stok,
     }
 
     return render(request, "main.html", context)
+
+
+def show_xml(request):
+    data = Item.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = Item.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json") 
+
+def show_xml_by_id(request, id):
+    data = Item.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json_by_id(request, id):
+    data = Item.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
