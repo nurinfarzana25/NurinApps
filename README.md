@@ -37,6 +37,12 @@
 
 6. Akses kelima URL dengan Postman
   Untuk mengakses menggunakan Postman, maka perlu menjalankan perintah python manage.py runserver, dan melakukan request baru dengan method GET dan url http://localhost:8000/xml atau http://localhost:8000/json atau juga http://localhost:8000/xml/[id] atau http://localhost:8000/json/[id] untuk mengetes fungsi pengambilan data produk berdasarkan ID. Berikut hasil dari akses kelima url tersebut melalui postman.
+![HTML 1](https://github.com/nurinfarzana25/NurinApps/blob/main/foto/html.png)
+![HTML 2](https://github.com/nurinfarzana25/NurinApps/blob/main/foto/html%20(2).png)
+![XML](https://github.com/nurinfarzana25/NurinApps/blob/main/foto/xml.png)
+![JSON](https://github.com/nurinfarzana25/NurinApps/blob/main/foto/json.png)
+![XML BY ID](https://github.com/nurinfarzana25/NurinApps/blob/main/foto/xml%20by%20id.png)
+![JSON BY ID](https://github.com/nurinfarzana25/NurinApps/blob/main/foto/json%20by%20id.png)
 
 ############################################################
 
