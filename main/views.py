@@ -16,7 +16,6 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 def show_main(request):
     items = Item.objects.filter(user=request.user)
-    # total_stok = items.aaggregate(total_stok=Sum('amount'))['total_stok'] or 0
     total_stok = items.aggregate(total_stok=Sum('amount'))['total_stok'] or 0
 
 
@@ -25,7 +24,7 @@ def show_main(request):
         'class': 'PBP C',
         'items': items,
         'total_stok': total_stok,
-        'last_login': request.COOKIES['last_login'],
+        'last_login': request.COOKIES['last_login']
     }
 
     return render(request, "main.html", context)
