@@ -1,3 +1,62 @@
+1. Django UserCreationForm adalah salah satu formulir bawaan (built-in form) yang disediakan oleh Django, sebuah kerangka kerja (framework) Python untuk pengembangan aplikasi web. Formulir ini digunakan untuk membuat dan mendaftarkan pengguna baru pada sebuah situs web yang menggunakan Django. Dalam konteks autentikasi pengguna, UserCreationForm digunakan bersama dengan model pengguna bawaan Django, yaitu User.
+
+# Kelebihan UserCreationForm:
+
+ - Mudah Digunakan: UserCreationForm telah siap pakai dan mudah digunakan. Pengguna hanya perlu mengimpor dan mengintegrasikannya ke dalam aplikasi Django Anda.
+ - Validasi Otomatis: Form ini dilengkapi dengan validasi otomatis untuk memastikan bahwa pengguna memasukkan informasi yang sesuai, seperti memeriksa apakah kata sandi memenuhi kebijakan keamanan yang ditetapkan.
+ - Konfigurasi yang Fleksibel: dapat menyesuaikan formulir ini sesuai kebutuhan proyek. Selain itu. dapat menambahkan atau menghapus bidang, menyesuaikan pesan kesalahan, atau menambahkan validasi tambahan.
+ - Integrasi dengan Django Admin: Formulir ini dapat dengan mudah digunakan bersama dengan Django Admin untuk mengelola pengguna.
+
+# Kekurangan UserCreationForm:
+
+ - Tampilan Default: Tampilan dari UserCreationForm mungkin terlalu sederhana atau tidak sesuai dengan desain tampilan spesifik yang diinginkan oleh pengembang atau desainer web.
+ - Kustomisasi yang Terbatas: Meskipun dapat menyesuaikan formulir ini, kustomisasi yang lebih lanjut, seperti menambahkan bidang kustom, dapat menjadi lebih rumit.
+ - Bahasa Tertentu: Pesan kesalahan dan label pada formulir ini akan mengikuti bahasa yang diatur dalam pengaturan Django. Ini mungkin menjadi kendala jika Anda menginginkan formulir dalam bahasa yang berbeda.
+
+ 2. Perbedaan autentikasi dan otorisasi
+ # Autentikasi
+  Autentikasi adalah proses mengidentifikasi pengguna dan memastikan bahwa pengguna adalah mereka yang mereka klaim sebagai.
+  Ini mencakup verifikasi identitas pengguna, biasanya dengan mengharuskan mereka memasukkan informasi login seperti nama pengguna (username) dan kata sandi (password).
+  Autentikasi dapat mencakup mekanisme tambahan seperti autentikasi dua faktor (2FA), autentikasi dengan token, atau integrasi dengan pihak ketiga seperti OAuth.
+  Tujuannya adalah untuk memastikan bahwa pengguna yang mencoba mengakses sistem adalah mereka yang sah.
+  # Otorisasi
+  Otorisasi adalah proses mengendalikan akses pengguna terotentikasi ke bagian-bagian tertentu dalam aplikasi berdasarkan peran (role) atau hak akses (permissions) yang mereka miliki.
+  Ini berkaitan dengan apa yang diizinkan atau tidak diizinkan pengguna lakukan setelah mereka terautentikasi.
+  Misalnya, pengguna dengan peran "Admin" dapat memiliki izin untuk mengelola pengguna lain, sedangkan pengguna biasa mungkin hanya diizinkan untuk melihat konten tetapi tidak dapat mengeditnya.
+  Tujuannya adalah untuk memastikan bahwa pengguna hanya memiliki akses ke sumber daya yang sesuai dengan peran atau izin mereka.
+
+3. Cookies adalah potongan kecil data yang disimpan di sisi klien (pada browser pengguna) saat berinteraksi dengan situs web. Mereka digunakan untuk menyimpan informasi tentang sesi pengguna, preferensi, dan informasi lainnya. Dalam konteks aplikasi web, cookies sering digunakan untuk:
+
+  - Mengelola Sesi Pengguna: Salah satu penggunaan utama cookies adalah untuk mengelola sesi pengguna. Ini memungkinkan server web untuk mengidentifikasi pengguna yang telah terautentikasi dan menyimpan informasi seperti ID sesi, yang kemudian dapat digunakan untuk mempertahankan keadaan sesi selama kunjungan berikutnya.
+
+  - Melacak Preferensi Pengguna: Cookies dapat digunakan untuk menyimpan preferensi pengguna, seperti bahasa yang dipilih, tema situs web, atau pengaturan lainnya. Ini membantu dalam memberikan pengalaman yang disesuaikan dengan preferensi pengguna.
+
+  - Pelacakan Analitik: Cookies dapat digunakan untuk melacak perilaku pengguna di situs web, seperti halaman yang dikunjungi, waktu yang dihabiskan di situs, dan interaksi lainnya. Ini membantu pemilik situs untuk menganalisis kinerja dan perilaku pengguna.
+
+  - Iklan Target: Dalam iklan online, cookies digunakan untuk menyimpan data tentang perilaku pengguna dan digunakan untuk menampilkan iklan yang sesuai dengan minat pengguna.
+
+4. Penggunaan cookies dalam pengembangan web memiliki risiko potensial yang harus diwaspadai. Cookies adalah alat yang berguna untuk menyimpan informasi pada peramban pengguna, namun ada beberapa risiko yang terkait dengan penggunaannya:
+
+  - Kehilangan Privasi Pengguna: Cookies dapat digunakan untuk melacak perilaku pengguna secara online, termasuk situs web yang mereka kunjungi dan preferensi mereka. Jika informasi ini disalahgunakan atau dibagikan tanpa izin, privasi pengguna dapat terancam.
+
+  - Potensi Serangan Keamanan: Cookies yang tidak diamankan dengan baik dapat menjadi sasaran serangan, seperti serangan Cross-Site Scripting (XSS) di mana penyerang memasukkan kode berbahaya ke dalam halaman web yang dieksekusi oleh peramban pengguna. Hal ini dapat membahayakan data cookies.
+
+  - Cross-Site Request Forgery (CSRF): Cookies juga dapat digunakan dalam serangan CSRF, di mana penyerang memaksa pengguna untuk melakukan tindakan tertentu tanpa izin saat mereka masuk ke situs web yang menggunakan cookies.
+
+  - Cookie Theft: Jika cookies tidak diamankan dengan baik, mereka dapat dicuri oleh penyerang. Penyerang yang berhasil mencuri cookie sesi (session cookie) dapat mendapatkan akses ke akun pengguna yang bersangkutan.
+
+  - Tracking dan Profiling: Cookies dapat digunakan oleh perusahaan untuk melacak dan membangun profil pengguna. Ini dapat menyebabkan masalah privasi dan perasaan pengawasan.
+
+5. Implementasi checklist step-by-step
+# Mengimplementasikan fungsi register, login, dan logout
+  Yaitu dengan membuat fungsi baru yang bernamakan register, login_user, dan logout_user pada vberkas file views.py yang ada di subdirektori main. Kemudian menambahkan import redirect, UserCreationForm, dan messages pada bagian paling atas. Setelah itu melengkapi kode untuk semua fungsi register, login_user, dan logout_user. Pada folder main/templates, dibuat dua file html baru yang bernama register.html serta login.html. Untuk semua fungsi baru yang sudah dibuat, maka perlu melakukan import semua fungsi tersebut pada berkas urls.py yang ada di subdirektori main dan menambahkan path url ke dalam urlpatterns untuk dapat mengakses fungsi yang sudah diimport tersebut.
+# Menghubungkan Item dengan User
+  Melakukan import User pada berkas models.py, serta menambahkan program user = models.ForeignKey(User, on_delete=models.CASCADE) pada model Item untuk menghubungkan satu produk dengan satu user melalui sebuah relationship. Serta menambahkan beberapa potongan kode ke fungsi create_product di berkas views.py . Selain itu, juga perlu mengubah fungsi show_main untuk value dari name dalam context. Karena mengubah isi dari models, maka perlu melakukan migration.
+# Menggunakan data dari cookies
+  Karena sebelumnya sudah dilakukan import HttpResponseRedirect dan reverse pada berkas views.py, maka hanya tinggal melakukan import datetime. Kemudian menambahkan fungsi yang dapat menambahkan cookie yang bernama last_login pada fungsi login_user. Fungsi ini digunakan untuk melihat waktu terakhir kali pengguna melakukan login, yaitu dengan mengubah beberapa potongan kode di fungsi login_user. Pada fungsi show_main juga perlu ditambahkan potongan kode dengan key last login yang berisikan request.COOKIES['last_login']. Serta mengubah fungsi logout_user dengan menambahkan response.delete_cookie('last_login'). Pada main.html juga ditambahkan potongan kode agar dapat menampilkan last login.
+  
+#########################################################
+
 1. Membuat input form untuk menambahkan objek model app sebelumnya.
   Form ini akan digunakan sebagai perantara untuk melakukan input data barang pada aplikasi yang kemudian dapat menambahkan data baru tersebut untuk dapat ditampilkan ke halaman utama. Pertama, dengan membuat berkas baru pada direktori main dengan format penamaan form.py yang kemudian ditambahkan kode-kode berupa import ModelForm dan Item dari django.forms dan main.models. Dibuat sebuah kelas dengan nama ProductForm yang didalamnya terdapat kelas lagi dengan nama meta. Dalam kelas Meta ini, terdapat variable model yang berisikan Item dan fields yang terdiri dari "name", "price", "description", "amount", "category", dan "image". Pada berkas views.py ditambahkan import HttpResponseRedirect, ProductForm, dan reserve. Pada berkas ini, ditambahkan juga suatu fungsi dengan nama create_product yang menerima parameter request serta kode untuk menghasilkan formulir yang dapat menambahkan data produk secara otomatis ketika ditambahkan pada form. Fungsi ini akan diimport pada file urls.py serta ditambahkan path url pada urlpatterns. Kemudian dibuat berkas baru bernama create_product.html sebagai kerangka dari tampilan halaman utama. Di file main.html juga ditambahkan kode-kode untuk menampilkan item-item yang sudah ditambahkan, dengan meliputi nama produk, harga, deskripsi, stok, kategori, dan tanggal ditambahkan.
 
