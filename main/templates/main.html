@@ -76,7 +76,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 20vh; /* Mengisi tinggi seluruh viewport (tinggi layar) */
+            height: 10vh; /* Mengisi tinggi seluruh viewport (tinggi layar) */
         }
 
             .custom-button {
@@ -108,6 +108,8 @@
         <th>Weight</th>
         <th>Amount</th>
         <th>Date Added</th>
+        <th>Action</th>
+
     </tr>
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
@@ -122,6 +124,14 @@
             <td>{{item.berat}}</td>
             <td>{{item.amount}}</td>
             <td>{{item.date_added}}</td>
+            <td>
+                <form method="post" action="{% url 'main:show_main' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <button type="submit" name="action" value="increase">Increase</button>
+                    <button type="submit" name="action" value="decrease">Decrease</button>
+                    <button type="submit" name="action" value="remove">Remove</button>
+                </form>
         </tr>
     {% endfor %}
 </table>

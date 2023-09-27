@@ -16,6 +16,27 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 def show_main(request):
     items = Item.objects.filter(user=request.user)
+
+    if request.method == "POST":
+        action = request.POST.get('action')
+        item_id = request.POST.get('item_id')
+
+        try:
+            item = Item.objects.get(id=item_id)
+
+            if action == "increase":
+                item.amount += 1
+                item.save()
+            elif action == "decrease":
+                if item.amount > 1:
+                    item.amount -= 1
+                    item.save()
+            elif action == "remove":
+                item.delete()
+
+        except Item.DoesNotExist:
+            pass
+    
     total_stok = items.aggregate(total_stok=Sum('amount'))['total_stok'] or 0
 
 
