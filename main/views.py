@@ -38,6 +38,7 @@ def show_main(request):
             pass
     
     total_stok = items.aggregate(total_stok=Sum('amount'))['total_stok'] or 0
+    total_item = items.count()
 
 
     context = {
@@ -45,6 +46,7 @@ def show_main(request):
         'class': 'PBP C',
         'items': items,
         'total_stok': total_stok,
+        'total_item': total_item,
         'last_login': request.COOKIES['last_login']
     }
 
