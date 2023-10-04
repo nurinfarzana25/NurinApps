@@ -1,161 +1,239 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>NurinMart Page</h1>
+<style>
+    /* Gaya CSS untuk navbar, header, tabel, tombol, dan footer (seperti sebelumnya) */
+    .navbar {
+        background-color: #5981ac;
+        color: white;
+    }
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
+    .navbar-brand {
+        font-size: 24px;
+    }
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
+    .navbar-nav .nav-item {
+        margin-right: 20px;
+    }
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mart Kebutuhan Pokok</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f5f5f5;
-                margin: 0;
-                padding: 0;
-            }
-    
-            header {
-                background-color: #007BFF;
-                color: white;
-                text-align: center;
-                padding: 20px;
-            }
-    
-            h1 {
-                font-size: 36px;
-            }
-    
-            .container {
-                max-width: 800px;
-                margin: 20px auto;
-                padding: 20px;
-                background-color: white;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-    
-            ul {
-                list-style-type: none;
-                padding: 0;
-            }
-    
-            li {
-                margin-bottom: 10px;
-                padding: 10px;
-                background-color: #f9f9f9;
-                border-radius: 5px;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            }
-        </style>
-        <style>
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-    
-            th, td {
-                border: 2px solid #3daee2;
-                padding: 4px;
-                text-align: center;
-            }
-    
-            th {
-                background-color: #f2f2f2;
-            }
+    /* Gaya untuk header */
+    header {
+        background-color: #4a7db5;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
 
-            .center-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 10vh; /* Mengisi tinggi seluruh viewport (tinggi layar) */
-        }
+    h1 {
+        font-size: 36px;
+    }
 
-            .custom-button {
-            background-color: #6eb8f8; /* Warna latar belakang */
-            color: #070707; /* Warna teks */
-            padding: 15px 30px; /* Padding (mengatur ruang di dalam tombol) */
-            border-radius: 5px; /* Mengatur sudut tombol */
-            cursor: pointer; /* Mengubah kursor saat diarahkan ke tombol */
-        }
-        </style>
-    </head>
-    </html>
-    <body>
-        <header>
-            <h1>Selamat Datang di NurinMart!</h1>
-            <h3>Penuhi Kebutuhan Harian dengan Mudah dan Nyaman</h3>
-        </header>
-    </body>
+    h2 {
+        font-size: 24px;
+    }
 
-<h3>Total barang : {{ total_item }}</h3>
-<h3>Total stok barang : {{ total_stok }}</h3>
+    h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    h4 {
+        font-size: 14px;
+    }
 
-<table>
-    <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>Weight</th>
-        <th>Amount</th>
-        <th>Date Added</th>
-        <th>Action</th>
+    /* Gaya untuk tabel */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-    </tr>
+    th, td {
+        border: 2px solid #71b5d5;
+        padding: 8px;
+        text-align: center;
+    }
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    th {
+        background-color: #f2f2f2;
+    }
 
-    {% for item in items %}
-        <tr>
-            <td><img src= "{{item.image}}" width=100 /></td>
-            <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
-            <td>{{item.category}}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.berat}}</td>
-            <td>{{item.amount}}</td>
-            <td>{{item.date_added}}</td>
-            <td>
+        /* Gaya untuk tombol */
+        .center-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .custom-button {
+        background-color: #71a0c8;
+        color: #070707;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+
+    .custom-button:hover {
+        background-color: #2a5182;
+    }
+
+    /* Gaya untuk footer */
+    footer {
+        background-color: #f5f5f5;
+        text-align: center;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .product-box {
+        border: 2px solid #3daee2;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .product-image {
+        width: 110px;
+        height: 110px;
+        object-fit: cover;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        margin-top: 10px;
+    }
+
+    .product-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .product-description {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .product-price {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .product-weight {
+        font-size: 14px;
+    }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity-button {
+        background-color: #5a95c9;
+        color: #a8d2ee;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 0 5px;
+    }
+
+    .quantity-button:hover {
+        background-color: #7faadf;
+    }
+
+       /* Gaya untuk sesi login */
+       .login-session {
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        padding: 20px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .login-session h5 {
+        font-size: 16px;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Gaya untuk tombol "Add New Product" dan "Logout" dalam sesi login */
+    .session-buttons {
+        margin-top: 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .session-buttons .custom-button {
+        margin-right: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">{{ name }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:create_product' %}">Add Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:logout' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <h1>NurinMart Page</h1>
+        <h3>Name: {{name}}</h3>
+        <h3>Class: {{class}}</h3>
+    </header>
+    <h4>Total barang : {{ total_item }}</h4>
+    <h4>Total stok barang : {{ total_stok }}</h4>
+    <div class="product-list">
+        {% for item in items %}
+        <div class="product-box">
+            <img class="product-image" src="{{ item.image }}" alt="{{ item.name }}">
+            <div class="product-details">
+                <div class="product-title">{{ item.name }}</div>
+                <div class="product-description">{{ item.description }}</div>
+                <div class="product-price">Harga: Rp{{ item.price }}</div>
+                <div class="product-weight">Berat: {{ item.berat }} </div>
                 <form method="post" action="{% url 'main:show_main' %}">
                     {% csrf_token %}
+                    <button type="submit" name="action" value="decrease">-</button>
+                    <span id="quantity-{{ item.id }}">{{ item.amount }}</span>
+                    <button type="submit" name="action" value="increase">+</button>
                     <input type="hidden" name="item_id" value="{{ item.id }}">
-                    <button type="submit" name="action" value="increase">Increase</button>
-                    <button type="submit" name="action" value="decrease">Decrease</button>
                     <button type="submit" name="action" value="remove">Remove</button>
                 </form>
-        </tr>
-    {% endfor %}
-</table>
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
-<br />
-
-<a href="{% url 'main:create_product' %}">
-    <div class="center-button">
-        <button class="custom-button">
-            Add New Product
-        </button>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-</a>
-<a href="{% url 'main:logout' %}">
-    <div class="center-button">
-        <button class="custom-button">
-            Logout
-        </button>
-    </div>
-</a>
-
-
-
+</div>
+<div class="session-buttons">
+    <a href="{% url 'main:create_product' %}" class="custom-button">Add New Product</a>
+    <a href="{% url 'main:logout' %}" class="custom-button">Logout</a>
+</div>
+<div class="login-session">
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
+</div>
+<footer>
+    <p>&copy; 2023 NurinMart</p>
+</footer>
 {% endblock content %}

@@ -5,30 +5,99 @@
 {% endblock meta %}
 
 {% block content %}  
+<style>
+    .body {
+        background-color: #285169b0;
+    }
+    /* Gaya untuk kotak formulir */
+    .register-container {
+        background-color: #b2c4ccb4;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(130, 170, 193, 0.1);
+        max-width: 500px;
+        margin: 0 auto;
+    }
 
-<div class = "login">
+    h1 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    /* Gaya untuk tabel formulir */
+    table {
+        width: 100%;
+    }
+
+    td {
+        padding: 10px 0;
+    }
+
+    /* Gaya untuk input dan tombol */
+    input[type="text"],
+    input[type="password"], 
+    input[type="email"] {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        width: 150px;
+        text-align: center;
+        background-color: #366e9f;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #174d86;
+    }
+
+    /* Gaya untuk pesan kesalahan */
+    .error-messages {
+        background-color: #f2dede;
+        color: #a94442;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+</style>
+
+<body class="body">
+    <div class="register-container">
+        <h1>Register</h1>
     
-    <h1>Register</h1>  
-
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+                <tr>
                     <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
+                    <td><input type="submit" name="submit" value="Register" /></td>
+                </tr>
+            </table>
         </form>
+    
+        {% if messages %}
+        <div class="error-messages">
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
+</body>
 
 {% endblock content %}

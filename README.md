@@ -1,3 +1,50 @@
+1. Manfaat dari setiap element selector serta waktu penggunaannya.
+  p : digunakan untuk gaya penulisan suatu paragraf atau kalimat yang bersifat deskriptif.
+  h1/h2/h3/... : digunakan untuk gaya penulisan kalimat yang merupakan header atau subheader
+  navbar : digunakan untuk mengatur tampilan navigation add product dan logout di bagian atas halaman utama.
+  table/th/td : digunakkan untuk mengatur format dari table, bentuk, ukuran, judul kategori, maupun isi dari table
+
+2. Beberapa tag HTML5 yang umum adalah:
+
+  <header>: Untuk bagian atas atau kepala dokumen, sering berisi judul dan navigasi.
+  <nav>: Untuk elemen navigasi, seperti menu.
+  <main>: Menandakan konten utama dokumen.
+  <article>: Untuk konten yang berdiri sendiri, seperti posting blog atau artikel.
+  <section>: Untuk mengelompokkan konten tematik dalam dokumen.
+  <aside>: Untuk konten tambahan yang terkait dengan konten di sekitarnya.
+  <footer>: Untuk bagian bawah dokumen, sering berisi hak cipta atau tautan terkait.
+
+3. Perbedaan antara Margin dan Padding:
+
+  Margin: Margin adalah jarak antara elemen dengan elemen lain di sekitarnya. Margin berkontribusi pada tata letak elemen dalam dokumen. Ini tidak memiliki latar belakang dan tidak dapat diwarnai.
+
+  Padding: Padding adalah jarak antara batas elemen dan kontennya. Padding tidak mempengaruhi tata letak elemen tetapi mempengaruhi jarak antara konten dan batas elemen. Sehingga dapat memberikan warna latar belakang pada padding.
+
+4. Perbedaan antara Bootstrap dan Tailwind CSS:
+
+  Bootstrap:
+  - Bootstrap adalah framework CSS yang penuh fitur dengan komponen siap pakai seperti navbar, tombol, formulir, dll.
+  - Memiliki desain bawaan yang cukup baik dan memerlukan penyesuaian minimal.
+  - Lebih cocok untuk pengembangan cepat dan prototyping.
+  - Menyediakan kelas-kelas CSS yang diberi nama sesuai fungsi mereka.
+  - Memiliki tema bawaan yang dapat disesuaikan.
+  - Cocok untuk pengembang yang ingin komponen dan tata letak yang kaya dan siap pakai.
+
+  Tailwind CSS:
+  - Tailwind CSS adalah framework CSS yang berfokus pada "utility-first", yang mana dapat menggabungkan kelas-kelas utilitas untuk membangun tampilan.
+  - Lebih fleksibel dan memerlukan penulisan CSS khusus untuk setiap komponen.
+  - Cocok untuk proyek yang memerlukan desain yang sangat disesuaikan dan fleksibilitas ekstrim.
+  - Mengharuskan pengembang untuk menulis lebih banyak kode HTML dan kelas CSS secara eksplisit.
+  - Tidak memiliki tema bawaan, tetapi memungkinkan  untuk membuat tema Anda sendiri.
+
+Pemilihan antara Bootstrap dan Tailwind tergantung pada kebutuhan proyek masing-masing dan preferensi pengembangan. Gunakan Bootstrap jika ingin pengembangan cepat dengan komponen yang siap pakai. Gunakan Tailwind jika ingin fleksibilitas tinggi dalam desain dan siap untuk menulis lebih banyak kode kelas CSS secara eksplisit.
+
+5. Step-by-step:
+  - Menambahkan Bootstrap ke aplikasi, yaitu dwngan menambahkan tag <meta name="viewport"> di base.html serta menambahkan bootstrap CSS dan JS yaitu berupa <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> dan <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>.
+  - Menambahkan navbar dengan  memanfaatkan bootsrtap pada halaman main.html, untuk tampilan tomobol logout dan add new produc agar terletak pada navigation bar.
+  -Menambahkan tombol di setiap produk yang dapat menghapus data-data dari produk tersebut dari halaman main.
+  - Melakukan customisasi desain pada template html dengan menggunakan CSS untuk halaman login, register, ddan add produk.
+##########################################################
 1. Django UserCreationForm adalah salah satu formulir bawaan (built-in form) yang disediakan oleh Django, sebuah kerangka kerja (framework) Python untuk pengembangan aplikasi web. Formulir ini digunakan untuk membuat dan mendaftarkan pengguna baru pada sebuah situs web yang menggunakan Django. Dalam konteks autentikasi pengguna, UserCreationForm digunakan bersama dengan model pengguna bawaan Django, yaitu User.
 
 # Kelebihan UserCreationForm:
