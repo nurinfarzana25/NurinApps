@@ -282,6 +282,9 @@
                             <p>Weight: ${item.fields.berat}</p>
                             <p>Amount: ${item.fields.amount}</p>
                         </div>
+
+                        <a href="#" class="btn btn-primary" onclick="addItemAmount(${item.pk})" style="background-color: #392004;">+</a>
+                        <a href="#" class="btn btn-primary" onclick="removeItemAmount(${item.pk})" style="background-color: #392004;">-</a>
                     
                         <button onclick="deleteProduct(${item.pk})" type="submit" style="background-color: #ff3333; color: #fff; padding: 5px 10px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; width: 100%; margin-right: 10px;">
                             Delete
@@ -301,6 +304,32 @@
         window.location.reload()
         return false
     }
+
+    async function addItemAmount(pk) {
+            const formData = new FormData();
+            formData.append("id", pk);
+            fetch("{% url 'main:add_ajax' %}", {
+                method: "POST",
+                body: formData
+            }).then(() => {
+                // Setelah berhasil menambah item, perbarui tampilan produk
+                refreshProducts();
+                window.location.reload()
+            });
+        }
+
+        async function removeItemAmount(pk) {
+            const formData = new FormData();
+            formData.append("id", pk);
+            fetch("{% url 'main:remove_ajax' %}", {
+                method: "POST",
+                body: formData
+            }).then(() => {
+                // Setelah berhasil menghapus item, perbarui tampilan produk
+                refreshProducts();
+                window.location.reload()
+            });
+        }
     
     function deleteProduct(pk) {
         fetch(`/delete_product/${pk}`, {
