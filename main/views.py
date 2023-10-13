@@ -13,6 +13,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
 
 @login_required(login_url='/login')
 def show_main(request):
@@ -131,13 +133,11 @@ def edit_product(request, id):
     context = {'form': form}
     return render(request, "edit_product.html", context)
 
-def delete_product(request, id):
-    # Get data berdasarkan ID
-    product = Item.objects.get(pk = id)
-    # Hapus data
-    product.delete()
-    # Kembali ke halaman awal
-    return HttpResponseRedirect(reverse('main:show_main'))
+def delete_product(request, product_id):
+    if request.method == 'DELETE':
+        Item.objects.filter(id=product_id).delete()
+
+        return JsonResponse({'status':'success'})
 
 def get_product_json(request):
     product_item = Item.objects.filter(user=request.user)

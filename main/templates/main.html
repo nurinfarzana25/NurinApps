@@ -262,6 +262,7 @@
     <p>&copy; 2023 NurinMart</p>
 </footer>
 <script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
     async function getProducts() {
         return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
     }
@@ -282,7 +283,9 @@
                             <p>Amount: ${item.fields.amount}</p>
                         </div>
                     
-                    <a href="delete/${item.pk}" class="custom-button">Delete</a>
+                        <button onclick="deleteProduct(${item.pk})" type="submit" style="background-color: #ff3333; color: #fff; padding: 5px 10px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; width: 100%; margin-right: 10px;">
+                            Delete
+                        </button>
             </tr>` 
             })
         
@@ -299,18 +302,21 @@
         return false
     }
     
-    function deleteProduct(pk){
-        const form = new FromData()
-        form.append('product_id', pk)
-
-        fetch("delete/", {
-            method: "POST",
+    function deleteProduct(pk) {
+        fetch(`/delete_product/${pk}`, {
+            method: 'DELETE',
             headers: {
                 'X-CSRFToken': csrftoken,
-                'mode': 'same_origin'
-            },
-            body: form
-        }).then(res => {;refreshProducts()})
+                'mode': 'same-origin'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Product deleted:', data);
+            refreshProducts();
+            window.location.reload();
+        })
+        .catch(error => console.error('Error:', error));
     }
 
     document.getElementById("button_add").onclick = addProduct
