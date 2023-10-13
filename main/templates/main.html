@@ -98,36 +98,29 @@
         display: flex;
         align-items: center;
     }
+    .product-card {
+        display: inline-block;
+        width: 350px;
+        height: 450px;
+        margin: 2%;
+        border: 1px solid #a4c9e0;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        text-align: center;
+        background-color: #c9daec;
+        vertical-align: top;
+        border-radius: 10px;
+    }
+
+    .product-detail {
+        text-align: center;
+    }
 
     .product-image {
-        width: 110px;
-        height: 110px;
+        width: 150px;
+        height: 150px;
         object-fit: cover;
         margin-right: 20px;
-    }
-
-    .product-details {
-        margin-top: 10px;
-    }
-
-    .product-title {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .product-description {
-        font-size: 14px;
-        margin-bottom: 5px;
-    }
-
-    .product-price {
-        font-size: 14px;
-        margin-bottom: 5px;
-    }
-
-    .product-weight {
-        font-size: 14px;
     }
 
     .quantity-controls {
@@ -178,6 +171,12 @@
         justify-content: center;
         align-items: center;
     }
+
+    .product-action {
+        margin-right: 10px;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 
 <div class="container">
@@ -204,27 +203,53 @@
     </header>
     <h4>Total barang : {{ total_item }}</h4>
     <h4>Total stok barang : {{ total_stok }}</h4>
-    <div class="product-list">
-        {% for item in items %}
-        <div class="product-box">
-            <img class="product-image" src="{{ item.image }}" alt="{{ item.name }}">
-            <div class="product-details">
-                <div class="product-title">{{ item.name }}</div>
-                <div class="product-description">{{ item.description }}</div>
-                <div class="product-price">Harga: Rp{{ item.price }}</div>
-                <div class="product-weight">Berat: {{ item.berat }} </div>
-                <form method="post" action="{% url 'main:show_main' %}">
-                    {% csrf_token %}
-                    <button type="submit" name="action" value="decrease">-</button>
-                    <span id="quantity-{{ item.id }}">{{ item.amount }}</span>
-                    <button type="submit" name="action" value="increase">+</button>
-                    <input type="hidden" name="item_id" value="{{ item.id }}">
-                    <button type="submit" name="action" value="remove">Remove</button>
-                </form>
+    <table id="product_table">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="col-form-label">Price:</label>
+                                <input type="number" class="form-control" id="price" name="price"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <textarea class="form-control" id="description" name="description"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="berat" class="col-form-label">Weight:</label>
+                                <input type="text" class="form-control" id="berat" name="berat"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="stok" class="col-form-label">Amount:</label>
+                                <input type="number" class="form-control" id="amount" name="amount"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="col-form-label">Image:</label>
+                                <textarea class="form-control" id="image" name="image"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                    </div>
+                </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
+    </table>
+
+    <button type="button" class="custom-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
 </div>
 <div class="session-buttons">
     <a href="{% url 'main:create_product' %}" class="custom-button">Add New Product</a>
@@ -236,4 +261,59 @@
 <footer>
     <p>&copy; 2023 NurinMart</p>
 </footer>
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+    async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = ``;
+
+        products.forEach((item) => {
+                htmlString += `\n<tr>
+                    <div class="product-card">
+                        <img class="product-image" src="${item.fields.image}">
+                        <div class="product-detail">
+                            <h3>${item.fields.name}</h3>
+                            <p>${item.fields.description}</p>
+                            <p>Price: ${item.fields.price}</p>
+                            <p>Weight: ${item.fields.berat}</p>
+                            <p>Amount: ${item.fields.amount}</p>
+                        </div>
+                    
+                    <a href="delete/${item.pk}" class="custom-button">Delete</a>
+            </tr>` 
+            })
+        
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        window.location.reload()
+        return false
+    }
+    
+    function deleteProduct(pk){
+        const form = new FromData()
+        form.append('product_id', pk)
+
+        fetch("delete/", {
+            method: "POST",
+            headers: {
+                'X-CSRFToken': csrftoken,
+                'mode': 'same_origin'
+            },
+            body: form
+        }).then(res => {;refreshProducts()})
+    }
+
+    document.getElementById("button_add").onclick = addProduct
+    refreshProducts()
+</script>
 {% endblock content %}

@@ -1,3 +1,29 @@
+1. Perbedaan antara asynchronous programming dan synchronous programming adalah:
+  - Synchronous Programming:
+    - Tugas-tugas dieksekusi berurutan.
+    - Blocking: Program menunggu operasi selesai.
+    - Tidak bersifat non-blocking.
+  - Asynchronous Programming:
+    - Tugas-tugas dapat dimulai tanpa menunggu.
+    - Non-blocking: Program dapat melanjutkan eksekusi.
+    - Menggunakan callback atau promise.
+
+2. Paradigma "event-driven programming" adalah suatu pendekatan dalam pemrograman di mana program berinteraksi dengan event atau peristiwa yang terjadi, dan tindakan atau respons yang sesuai diambil ketika event tersebut terjadi. Dalam konteks JavaScript dan AJAX (Asynchronous JavaScript and XML), paradigma ini sering digunakan untuk membuat aplikasi web yang responsif dan dinamis. Maksud dari paradigma "event-driven programming" adalah bahwa program atau aplikasi merespons peristiwa (event) yang terjadi di lingkungannya. Event-event ini bisa berupa interaksi pengguna, seperti klik mouse, pengisian formulir, atau pengguliran halaman web. Ketika event terjadi, program akan menjalankan fungsi atau tindakan tertentu sesuai dengan event tersebut. Contoh dari penerapan paradigma "event-driven programming" dalam JavaScript dan AJAX pada tugas ini yaitu button click delete, ataupun button lainnya.
+
+3. Penerapan asynchronous programming dalam AJAX (Asynchronous JavaScript and XML) adalah kunci untuk membuat aplikasi web yang responsif dan dinamis. Ini memungkinkan untuk mengirim permintaan ke server web dan menerima data tanpa menghalangi eksekusi kode JavaScript lainnya. Berikut adalah penjelasan mengenai penerapan asynchronous programming pada AJAX:
+  - NonBlocking Request
+    Dalam pemrograman asynchronous, permintaan AJAX tidak memblokir eksekusi kode JavaScript lainnya. Ini berarti bahwa kode JavaScript dapat terus berjalan sambil menunggu hasil permintaan HTTP.
+  - EvenDriven Approach
+    Menentukan callback functions (fungsi yang akan dijalankan ketika permintaan selesai) yang akan merespons event-event seperti permintaan berhasil atau gagal.
+
+4. Fetch API adalah pendekatan standar JavaScript modern untuk mengelola permintaan asinkron, sedangkan jQuery adalah library yang mendukung AJAX dan menyediakan berbagai utilitas lain untuk manipulasi DOM. Pilihan tergantung pada kebutuhan proyek dan target browser. Jika mengembangkan aplikasi web modern, Fetch API adalah pilihan yang baik. Jika perlu mendukung browser lama atau ingin memanfaatkan utilitas jQuery, maka jQuery adalah pilihan yang sesuai. Perkembangan industri lebih cenderung ke arah penggunaan Fetch API dan JavaScript standar saat ini.
+
+5. Implementasi step-by-step:
+  - Mengubah Kode Cards Data Item agar Mendukung AJAX GET: Modifikasi kode JavaScript untuk mengambil data dari server menggunakan AJAX GET request. Dan dapat menggunakan Fetch API atau jQuery.ajax untuk ini. Buat endpoint di sisi server (misalnya menggunakan framework Django, Flask, Express, atau bahasa pemrograman lainnya) yang akan merespons permintaan AJAX dengan data yang sesuai.
+  - AJAX POST: Tambahkan tombol atau elemen yang akan membuka modal ketika diklik. Modal ini akan berisi formulir untuk menambahkan item baru. Buat fungsi JavaScript untuk mengirim data formulir ke server menggunakan AJAX POST request. Buat fungsi view baru di sisi server yang akan menangani permintaan POST dan menambahkan item baru ke dalam basis data. Tautkan formulir dalam modal dengan path URL yang sesuai yang akan mengirimkan permintaan POST.Setelah menambahkan item baru, lakukan refresh pada daftar item secara asinkronus (tanpa perlu me-refresh seluruh halaman) untuk menampilkan daftar item terbaru. Ini dapat dilakukan dengan menambahkan item baru ke daftar dengan JavaScript atau dengan memuat ulang data menggunakan AJAX GET request.
+  - Perintah collectstatic biasanya digunakan dalam konteks Django untuk mengumpulkan file statis (seperti file CSS, JavaScript, gambar) ke dalam satu direktori yang dapat diakses oleh server web Anda. Ini diperlukan untuk memastikan bahwa file-file statis dapat diakses oleh pengguna saat aplikasi berjalan di produksi
+##########################################################
+
 1. Manfaat dari setiap element selector serta waktu penggunaannya.
   p : digunakan untuk gaya penulisan suatu paragraf atau kalimat yang bersifat deskriptif.
   h1/h2/h3/... : digunakan untuk gaya penulisan kalimat yang merupakan header atau subheader
