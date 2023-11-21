@@ -157,6 +157,7 @@ def add_ajax(request):
 
     return HttpResponseNotFound()
 
+
 @csrf_exempt
 def remove_ajax(request):
     if request.method == 'POST':
