@@ -175,7 +175,6 @@ def remove_ajax(request):
 
     return HttpResponseNotFound()
 
-
 @csrf_exempt
 def add_product_ajax(request):
     if request.method == 'POST':
